@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    {% load static %}		<!-- agregar estatic-->
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}"> 
+    <title>Ninja Gold</title>
+</head>
+<body>
+    <div class="container p-5">
+        <div class="row mb-5">
+            <div class="col-md-1">
+                <p>Tu Oro:</p>
+            </div>
+            <div class="col-md-1 bg-warning">
+                <p class='text-white' id='oro_actual'>{{request.session.oro_actual}}</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2 mx-2 bg-secondary">Farm</div>
+            <div class="col-md-2 mx-2 bg-secondary">Cave</div>
+            <div class="col-md-2 mx-2 bg-secondary">House</div>
+            <div class="col-md-2 ms-2 bg-secondary">Casino</div>
+        </div>
+        <div class="row mt-3">
+            <p>Actividades:</p>
+            <div class="col-md-9">
+                <div class="bg-success px-5"> 
+                    lo que hago
+                </div>
+            </div>
+            <div class="col-md-4"></div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+    <!-- {% csrf_token %}  se debe poner dentro de un formulario-->
+    <!-- <div class="row">
+        <div class='col-md-5'></div>
+            <div id='fecha' class='col-md-2 p-3'>
+                <div class="row">
+                    <form action="/random_word" class="btn btn-success mb-2">
+                    <button type="submit" class="btn btn-success mb-2" name='generar'>Generate</button>
+                    </form>
+                </div>
+                <div class="row">
+                    <form action="/random_word/reset" class="btn btn-danger">
+                    <button type="submit" class="btn btn-danger" name='reset'>Reset</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class='col-md-5'></div>
+    </div> -->
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+</body>
+</html>

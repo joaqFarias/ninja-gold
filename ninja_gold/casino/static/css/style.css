@@ -1,0 +1,26 @@
+/* {
+    para dar el cuadriculado 
+    outline: 1px dotted yellowgreen;
+    margin: 0px;
+    padding: 0px; 
+}  */
+
+.col-md-9, .col-md-1, .col-md-2  {
+    text-align: center;
+    vertical-align: middle;
+    position: relative;
+}
+
+.border{
+    border: 10px solid black;
+    min-height: 40vh;
+    height: 40vh;
+}
+
+.txt-green {
+    color: green;
+}
+
+.txt-red {
+    color: red;
+}

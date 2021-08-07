@@ -1,69 +1,75 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ninja Gold</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
     {% load static %}		<!-- agregar estatic-->
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}"> 
-    <title>Ninja Gold</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"> 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 <body>
     <div class="container p-5">
         <div class="row mb-5">
             <div class="col-md-1">
-                <p>Tu Oro:</p>
+                <p><b>Your Gold:</b></p>
             </div>
-            <div class="col-md-1 bg-warning">
+            <div class="col-md-1 pt-3 bg-warning">
                 <p class='text-white' id='oro_actual'>{{request.session.oro_actual}}</p>
+            </div>
+            <div class="col-md-1 ms-3">
+                <form action="/games/reset">{% csrf_token %}<button type='submit' class='btn btn-danger'>Reset</button></form>
             </div>
         </div>
         <div class="row">
-            <div class="col-md-2 mx-2 bg-secondary">Farm</div>
-            <div class="col-md-2 mx-2 bg-secondary">Cave</div>
-            <div class="col-md-2 mx-2 bg-secondary">House</div>
-            <div class="col-md-2 ms-2 bg-secondary">Casino</div>
+            <div class="col-md-2 mx-2 bg-secondary p-3">
+                <h3 class='text-white mt-3'><b>Farm</b></h3>
+                <p class='text-white'>(Earns 10-20 gold)</p>
+                <form action="/games/farm">{% csrf_token %}<button type='submit' class='btn btn-success gold'>Find Gold!</button></form>
+            </div>
+            <div class="col-md-2 mx-2 bg-secondary p-3">
+                <h3 class='text-white mt-3'><b>Cave</b></h3>
+                <p class='text-white'>(Earns 8-10 gold)</p>
+                <form action="/games/cave">{% csrf_token %}<button type='submit' class='btn btn-success gold'>Find Gold!</button></form>
+            </div>
+            <div class="col-md-2 mx-2 bg-secondary p-3">
+                <h3 class='text-white mt-3'><b>House</b></h3>
+                <p class='text-white'>(Earns 2-5 gold)</p>
+                <form action="/games/house">{% csrf_token %}<button type='submit' class='btn btn-success gold'>Find Gold!</button></form>
+            </div>
+            <div class="col-md-2 ms-2 bg-secondary p-3">
+                <h3 class='text-white mt-3'><b>Casino</b></h3>
+                <p class='text-white'>(Earns/takes 0-50 gold)</p>
+                <form action="/games/casino">{% csrf_token %}<button type='submit' class='btn btn-success gold'>Find Gold!</button></form>
+            </div>
+        </div>
+        <div class="row mt-5">
+            <div-col-md>
+                <p><b>Activities:</b></p>
+            </div-col-md>
         </div>
         <div class="row mt-3">
-            <p>Actividades:</p>
+            
             <div class="col-md-9">
-                <div class="bg-success px-5"> 
-                    lo que hago
+                <div class="overflow-auto border border-4 border-dark bg-white p-5 size border h-100vh"> 
+                    {% for resultado in request.session.resultados %}
+                        {% if resultado.1 %}
+                            <p class='resultado txt-green'>{{resultado.0}}</p>
+                        {% else %}
+                            <p class='resultado txt-red'>{{resultado.0}}</p>
+                        {% endif %}
+                    {% endfor %}
                 </div>
             </div>
-            <div class="col-md-4"></div>
+            <div class="col-md-5"></div>
         </div>
     </div>
 
-
-
-
-
-
-
-
-
-    <!-- {% csrf_token %}  se debe poner dentro de un formulario-->
-    <!-- <div class="row">
-        <div class='col-md-5'></div>
-            <div id='fecha' class='col-md-2 p-3'>
-                <div class="row">
-                    <form action="/random_word" class="btn btn-success mb-2">
-                    <button type="submit" class="btn btn-success mb-2" name='generar'>Generate</button>
-                    </form>
-                </div>
-                <div class="row">
-                    <form action="/random_word/reset" class="btn btn-danger">
-                    <button type="submit" class="btn btn-danger" name='reset'>Reset</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-        <div class='col-md-5'></div>
-    </div> -->
-
-
+    <script src='{% static "js/actions.js" %}'></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
-</body>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    </body>
 </html>
